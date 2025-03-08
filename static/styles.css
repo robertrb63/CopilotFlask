@@ -1,1 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 20px;
+}
+h1 {
+    color: #333;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 5px;
+}
+form {
+    margin-top: 20px;
+}
+input[type="text"] {
+    padding: 5px;
+    width: 200px;
+}
+input[type="submit"] {
+    padding: 5px 10px;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+.producto-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    grid-gap: 20px;           /* Espacio entre columnas y filas */
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .producto {
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Opcional: Ajusta la imagen para que ocupe el ancho del contenedor */
+  .producto img {
+    width: 50%;
+    height: auto;
+  }
+  .carousel-item img {
+    width: 1cm;
+    height: 2cm;
+    object-fit: cover; /* Esto asegura que la imagen cubra el contenedor sin distorsionarse */
+  }
+  .especificar-dimension {
+    width: 300px;  /* Cambia a las dimensiones deseadas */
+    height: 200px;
+    object-fit: cover; /* Ajusta la imagen para que llene el espacio sin distorsionarse */
+  }
+   
