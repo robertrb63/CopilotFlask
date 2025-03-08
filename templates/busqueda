@@ -1,1 +1,90 @@
 
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>BARMON</title>
+        <!-- Enlace a Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <!-- Tu CSS personalizado -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <style>
+              /* Tamaño fijo para las imágenes del carousel */
+    .carousel-item img {
+      width: 5cm;
+      height: 5cm;
+      object-fit: cover;
+      margin: auto; /* Centra la imagen en su contenedor */
+    }
+    .banner-title {
+      background-color: #d2e97e;
+      color: #fff;
+      text-align: center;
+    }
+    </style>
+    </head> 
+<header>
+    <!-- Banner con título -->
+    <div class="banner-title">
+      <h1>BARMON</h1>
+    </div>
+
+    <!-- Carousel de imágenes -->
+    <div id="carouselBanner" class="carousel slide" data-ride="carousel">
+      <!-- Indicadores -->
+      <ol class="carousel-indicators">
+        <li data-target="#carouselBanner" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselBanner" data-slide-to="1"></li>
+        <li data-target="#carouselBanner" data-slide-to="2"></li>
+      </ol>
+      <!-- Imágenes del carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block" src="https://images.pexels.com/photos/31069583/pexels-photo-31069583.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="Imagen 1">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block" src="https://images.unsplash.com/photo-1528825871115-3581a5387919?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block" src="https://images.unsplash.com/photo-1528825871115-3581a5387919?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        </div>
+      </div>
+      <!-- Controles del carousel -->
+      <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselBanner" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+      </a>
+    </div>
+  </header>
+<body>
+    <div class="container">
+        <h1>Resultados para: "{{ query }}"</h1>
+        <ul>
+            {% if resultados %}
+                {% for producto in resultados %}
+                    <li style="margin-bottom:20px;">
+                        <h2>{{ producto.nombre }}</h2>
+                        <p>Precio: {{ producto.precio }}</p>
+                        {% if producto.precio_descuento %}
+                            <p>Precio con descuento: {{ producto.precio_descuento }}</p>
+                        {% endif %}
+                        {% if producto.lugar %}
+                            <p>Lugar: {{ producto.lugar }}</p>
+                        {% endif %}
+                        {% if producto.imagen %}
+                            <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" style="max-width:200px;">
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>No se encontraron productos.</li>
+            {% endif %}
+        </ul>
+        <a href="{{ url_for('index') }}">Volver a la página principal</a>
+    </div>
+</body>
+</html>
